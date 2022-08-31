@@ -1,0 +1,103 @@
+﻿@model MyClass.Models.Post
+
+@{
+    ViewBag.Title = "Chỉnh sửa trang đơn";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+ @section header {
+        <script src="~/Public/ckeditor/ckeditor.js"></script>
+}
+@using (Html.BeginForm("Edit", "Page", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.CreatedAt)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.Img)
+    <div class="content-wrapper">
+
+        <section class="content my-2">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">
+                                Chỉnh sửa trang đơn
+                            </strong>
+
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-sm btn-danger" type="submit" name="Edit"><i class="fas fa-save"></i> Lưu[Thêm]</button>
+                            <a class="btn btn-sm btn-success" href="@Url.Action("Index", "Page")"><i class="fas fa-undo-alt"></i> Quay lại</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group">
+                                <label>Tiêu đề</label>
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Chi Tiết<span class="text-danger">(*)</span></label>
+                                @Html.TextAreaFor(model => model.Detail, new
+                                      {
+                                          @class = "form-control",
+                                          @name = "editor1",
+                                          @id = "editor1",
+                                          @rows = "10"
+                                      })
+                                <script>
+                                    CKEDITOR.replace('editor1');
+                                </script>
+
+                                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Từ khóa tiềm kiếm <span class="text-danger">(*)</span></label>
+                                @Html.EditorFor(model => model.Metakey, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Metakey, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Từ khóa mô tả<span class="text-danger">(*)</span></label>
+                                @Html.EditorFor(model => model.MetaDesc, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MetaDesc, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Hình ảnh</label>
+                            <input type="file" name="FileImg" value="" class="form-control" accept=".png, .jpg, .gif" />
+                            @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    @Html.DropDownListFor(model => model.Status, new[] { new SelectListItem { Text = "Không xuất bản", Value = "2" }, new SelectListItem { Text = "Xuất bản", Value = "1" } }, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+}
+

@@ -1,0 +1,93 @@
+﻿@model MyClass.Models.Contact
+
+@{
+    ViewBag.Title = "Chỉnh Sửa Liên Hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <!-- Main content -->
+        <section class="content my-2">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">Chỉnh sửa Liên hệ</strong>
+
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-sm btn-danger" type="submit" name="Create"><i class="fas fa-save"></i> Lưu[Thêm]</button>
+                            <a class="btn btn-sm btn-success" href="@Url.Action("Index", "Contact")"><i class="fas fa-undo-alt"></i> Quay lại</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.CreatedAt)
+                    @Html.HiddenFor(model => model.CreatedBy)
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label>Họ & tên<span class="text-danger">(*)</span></label>
+                                @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Email<span class="text-danger">(*)</span></label>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Tiêu đề<span class="text-danger">(*)</span></label>
+
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Nội dung<span class="text-danger">(*)</span></label>
+                                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @rows = "3" })
+                                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Số điện thoại<span class="text-danger">(*)</span></label>
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                @Html.DropDownListFor(model => model.Status, new[] { new SelectListItem { Text = "Không xuất bản", Value = "2" }, new SelectListItem { Text = "Xuất bản", Value = "1" } }, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+}
+
+

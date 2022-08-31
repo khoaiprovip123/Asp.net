@@ -1,0 +1,24 @@
+﻿
+@{
+    var user = ViewBag.user;
+}
+<ul class="nav justify-content-end py-0">
+    @if (Session["UserCustomer"].Equals(""))
+    {
+        <li class="nav-item">
+            <a class="nav-link py-0 text-success" href="~/dang-nhap"><i class="fas fa-user"> Đăng nhập</i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link py-0 text-success" href="~/dang-ky"><i class="fas fa-user"> Đăng ký</i></a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link py-0 text-success" href="">Xin chào: @user.Fullname</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link py-0 text-success" href="~/dang-xuat"><i class="fas fa-user"> Đăng xuất</i></a>
+        </li>
+    }
+</ul>

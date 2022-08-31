@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MyClass.Models.ProductInfo>
+@{
+    var category = ViewBag.Category;
+}
+@if (Model.Count() != 0)
+{
+    <div class="category-title position-relative py-2">
+        <hr><h2 class="text-center text-uppercase text-success">@category.Name</h2>
+        <a class="float-end position-absolute top-50 end-0 py-2" href="~/@category.Slug">Xem tất cả</a>
+    </div>
+  
+    <div class="row py-2">
+        @foreach (var product in Model)
+        {
+            int flag = (product.Price == product.Pricesale) ? 1 : 0;
+            decimal PercentDiscount = (100 - (product.Pricesale / product.Price) * 100);
+            <div class="col-md-3 py-2">
+                <div class="item product-item">
+                    <div class="card" style="width:100%">
+                        <a href="@product.Slug"><img src="~/Public/images/Product/@product.Img" class="img-fluid card-img-top pt-2" alt="Alternate Text" /></a>
+                        @if (flag == 1)
+                        {
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                Mới
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                <span> -@string.Format("{0:#,0.0}", PercentDiscount)% </span>
+                            </span>
+                        }
+                        <div class="card-body ">
+                            <h6 class="card-title text-center"><b><a class="text-black text-decoration-none " href="@product.Slug">@product.Name</a></b></h6>
+                            <div class="text-center">
+                                <style>
+                                    .checked {
+                                        color: green;
+                                    }
+                                </style>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <h6 class="text-center ">
+                                <strong class="text-danger">@string.Format("{0:0,0}", product.Pricesale) <span class="text-decoration-underline">đ</span></strong>
+                                @if (flag != 1)
+                                {
+                                    <strong class="text-muted text-decoration-line-through ">@string.Format("{0:0,0}", product.Price)<span class="text-decoration-underline">đ</span></strong>
+                                }
+                            </h6>
+                            <div class="btn-group w-100" role="group">
+                                <a href="@product.Slug" class="btn btn-sm btn-outline-primary "><i class="far fa-eye"></i></a>
+                                <a href="@Url.Action("CartAdd","Giohang", new { productid= product.Id})" class="btn btn-sm btn-outline-primary "><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

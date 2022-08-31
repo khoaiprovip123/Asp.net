@@ -1,0 +1,51 @@
+﻿@model MyClass.Models.Config
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-wrapper">
+
+        <section class="content my-2">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">
+                                Xóa Cấu Hình
+                            </strong>
+
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-sm btn-danger" type="submit" value="Delete"><i class="fas fa-trash"></i> Xóa</button>
+                            <a class="btn btn-sm btn-success" href="@Url.Action("", "Config")"><i class="fas fa-undo-alt"></i> Quay lại</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width:150px">Tiêu Đề</th>
+                            <th> Nội dung</th>
+                        </tr>
+                        <tr>
+                            <th> @Html.DisplayNameFor(model => model.Name)</th>
+                            <th> @Html.DisplayFor(model => model.Name)</th>
+                        </tr>
+
+                        <tr>
+                            <th>Thông số</th>
+                            <th>@Html.DisplayFor(model => model.Value)</th>
+                        </tr>
+                        </table>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+ }

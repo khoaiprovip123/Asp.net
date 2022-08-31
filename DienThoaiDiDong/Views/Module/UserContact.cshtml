@@ -1,0 +1,41 @@
+﻿@model MyClass.Models.Contact
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()  
+    <div class="container py-3 ">
+        <div class="card shadow rounded-3 my-auto">
+            <div class="card-header text-center p-3 h4">
+                Gửi liên hệ trực tiếp với chúng tôi
+            </div>
+            <div class="card-body p-4">
+                <form role="form" class="row">
+                    <div class="form-group col-lg-12">
+                        <label class="form-control-label" for="form-group-input">Name</label>
+                        <input type="text" class="form-control" id="form-group-input" name="Fullname">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="form-control-label" for="form-group-input">Email</label>
+                        <input type="text" class="form-control" id="form-group-input" name="Email">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="form-control-label" for="form-group-input">Số điện thoại</label>
+                        <input type="text" class="form-control" id="form-group-input" name="Phone">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="form-control-label" for="form-group-input">Tiêu đề</label>
+                        <input type="text" class="form-control" id="form-group-input" name="Title">
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="form-control-label" for="form-group-input">Nội dung</label>
+                        <textarea class="form-control" id="form-group-input" name="Content" rows="6"></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <button class="btn btn-warning float-end mt-2" type="submit" for="form-group-input">Gửi liên hệ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,179 @@
+﻿@model MyClass.Models.User
+@{
+    ViewBag.Title = "Liên Hệ";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+    var InfoAdmin = ViewBag.InfoAdmin;
+}
+
+
+<section class="main-container clearfix">
+    <div class="container ">
+        <div class="row">
+            @*@Html.Partial("Message")*@
+            <div class="col-md-5">
+
+                <div class="container py-3 ">
+                    <div class="card shadow rounded-3 my-auto">
+                        <div class="card-header p-3 h4 text-center">
+                            Thông tin của chúng tôi
+                        </div>
+                        <div class="card-body p-4">
+                            <form role="form" class="row">
+                                <div class="form-group col-lg-12">
+                                    <p class="form-control-label" for="form-group-input"><i class="fas fa-id-card"></i> Name: @InfoAdmin.Fullname</p>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <p class="form-control-label" for="form-group-input"> <i class="fas fa-envelope"></i> Email: @InfoAdmin.Email</p>
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <p class="form-control-label" for="form-group-input"><i class="fas fa-phone-square"></i> Hotline: @InfoAdmin.Phone</p>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <p class="form-control-label" for="form-group-input"><i class="fas fa-map-marker-alt"></i> Địa chỉ: @InfoAdmin.Address</p>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <p class="form-control-label" for="form-group-input"><i class="fas fa-clock"></i> Thời gian phục vụ khách hàng: Buổi sáng: 7h30 - 11h30 | Buổi chiều: 13h - 17h | Hàng tuần</p>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-7">
+                @Html.Action("UserContact", "Module")
+                @*<div class="container py-3 ">
+                <div class="card shadow rounded-3 my-auto">
+                    <div class="card-header text-center p-3 h4">
+                        Gửi liên hệ trực tiếp với chúng tôi
+                    </div>
+                    <div class="card-body p-4">
+                        <form role="form" class="row">
+                            <div class="form-group col-lg-4">
+                                <label class="form-control-label" for="form-group-input">Name</label>
+                                <input type="text" class="form-control" id="form-group-input" name="Name">
+                            </div>
+                            <div class="form-group col-lg-8">
+                                <label class="form-control-label" for="form-group-input">Email</label>
+                                <input type="text" class="form-control" id="form-group-input" name="Email">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label class="form-control-label" for="form-group-input">Số điện thoại</label>
+                                <input type="text" class="form-control" id="form-group-input" name="Phone">
+                            </div>
+                            <div class="form-group col-lg-8">
+                                <label class="form-control-label" for="form-group-input">Tiêu đề</label>
+                                <input type="text" class="form-control" id="form-group-input" name="Title">
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="form-control-label" for="form-group-input">Nội dung</label>
+                                <textarea class="form-control" id="form-group-input" name="Content" rows="6"></textarea>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <button class="btn btn-warning float-end mt-2" type="submit" for="form-group-input">Gửi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Bản đồ</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d798.6100478534637!2d109.0162545!3d14.4552689!3m2!1i1024!2i768!4f13.1!5e1!3m2!1svi!2s!4v1638263862106!5m2!1svi!2s" width="1350" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            </div>
+        </div>
+    </div>
+</section>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<section class="main-container clearfix">
+        <div class="container my-3">
+            <div class="row">
+                <div class="category-title position-relative py-2">
+                    <h2 class="text-center text-uppercase text-success">Liên hệ</h2>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <p>Mọi người có thể theo dõi và liên hệ với chúng thôi qua nhiều phương thức</p>
+                        <div class="row py-2">
+                            <div class="col-md-3">
+                                <label>Họ tên: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input name="FullName" value="" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-md-3">
+                                <label>Số điện thoại: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input name="Phone" value="" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-md-3">
+                                <label>Địa chỉ Email: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input name="Email" value="" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-md-3">
+                                <label>Nội dung phản ánh: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input name="Email" value="" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success btn-sm">Gửi</button>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-lg-12 ">
+                        <p>Hoặc liên hệ trực tiếp qua số hotline:</p>
+                        <span>
+                            <p><img src="https://hdbank.com.vn/static/image/location-icon.png" style="height:27px; width:25px">Địa chỉ: Phước Long B, Quận 9, Tp.Thủ Đức, Tp.Hồ Chí Minh</p>
+
+                            <p><img src="https://hdbank.com.vn/static/image/time-icon.png" style="height:23px; width:23px">&nbsp;Thời gian phục vụ khách hàng: Buổi sáng: 7h30 - 11h30 | Buổi chiều: 13h - 17h | Hàng tuần</p>
+
+                            <p><img src="https://hdbank.com.vn/static/image/hotline-icon.png" style="height:24px; width:24px">&nbsp;Tổng đài CSKH 0868321794(24/7)</p>
+
+                            <p><img src="https://hdbank.com.vn/static/image/paper-plane-icon.png">&nbsp;Email: vankhoai690@gmail.com.com</p>
+
+                            <p><strong>Bản đồ</strong></p>
+                            <p>  <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d798.6100478534637!2d109.0162545!3d14.4552689!3m2!1i1024!2i768!4f13.1!5e1!3m2!1svi!2s!4v1638263862106!5m2!1svi!2s" width="1350" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>*@
+

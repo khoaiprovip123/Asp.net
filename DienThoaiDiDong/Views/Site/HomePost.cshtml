@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<MyClass.Models.PostInfo>
+
+<div class="row py-2">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-3 py-2">
+            <div class="item product-item">
+                <div class="card" style="width:100%">
+                    <a href=""><img src="~/Public/images/Post/@post.Img" class="img-fluid card-img-top pt-2" alt="Alternate Text" /></a>
+                    <div class="card-body ">
+                        <h6 class="card-title"><a class="text-black text-decoration-none " href="~/@post.Slug">@Html.Raw(XString.Str_Limit(post.Title, 60))</a></h6>
+
+                        <div class="text-right"><a href="~/@post.Slug"> Xem Thêm</a></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-3 py-2">
+                <div class="item product-item">
+                    <div class="card" style="width:100%">
+                        <a href=""><img src="~/Public/images/Post/Xiaomi-trinh-lang-cong-nghe-sac-khong-day-qua-khong-khi-voi-ten-goi-mi-air-charge-18-11-2021-8-00-55-ch.jpg" class="img-fluid card-img-top pt-2" alt="Alternate Text" /></a>
+                        <div class="card-body ">
+                            <h6 class="card-title"><a class="text-black text-decoration-none " href="">Xiaomi trình làng công nghệ sạc không dây qua không khí với tên gọi Mi Air Charge...</a></h6>
+
+                            <div class="text-right"><a href="~/xiaomi-ra-mat-tai-nghe-flipbuds-pro-chong-on-chu-dong-anc-gia-2,9-trieu-dong"> Xem Thêm</a></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 py-2">
+                <div class="item product-item">
+                    <div class="card" style="width:100%">
+                        <a href=""><img src="~/Public/images/Post/Xiaomi-ra-mat-khoan-dien-thong-minh--nho-gon--dong-co-khong-choi-than--co-man-hinh-hien-thi--gia-tu-1.6-trieu-dong-18-11-2021-7-58-30-ch.jpg" class="img-fluid card-img-top pt-2" alt="Alternate Text" /></a>
+                        <div class="card-body ">
+                            <h6 class="card-title"><a class="text-black text-decoration-none " href="">Xiaomi ra mắt khoan điện thông minh: Nhỏ gọn, động cơ không chổi than, có màn hình hiển thị...</a></h6>
+
+                            <div class="text-right"><a href="~/xiaomi-ra-mat-khoan-dien-thong-minh-nho-gon-dong-co-khong-choi-than-co-man-hinh-hien-thi-gia-tu-1,6-trieu-dong"> Xem Thêm</a></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 py-2">
+                <div class="item product-item">
+                    <div class="card" style="width:100%">
+                        <a href=""><img src="~/Public/images/Post/Xiaomi-se-ra-mat-black-shark-4-vao-ngay-23-3--man-hinh-6-67″--tan-so-quet-toi-144hz--snapdragon-888-18-11-2021-7-59-39-ch.jpg" class="img-fluid card-img-top pt-2" alt="Alternate Text" /></a>
+                        <div class="card-body ">
+                            <h6 class="card-title"><a class="text-black text-decoration-none " href="">Xiaomi sẽ ra mắt Black Shark 4 vào ngày 23/3: Màn hình 6,67″, tần số quét tới 144Hz...</a></h6>
+
+                            <div class="text-right"><a href="~/xiaomi-se-ra-mat-black-shark-4-vao-ngay-23-3-man-hinh-6-67-tan-so-quet-toi-144hz-snapdragon-888"> Xem Thêm</a></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    }
+</div>

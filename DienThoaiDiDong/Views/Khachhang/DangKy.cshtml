@@ -1,0 +1,54 @@
+﻿@model MyClass.Models.User
+@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+@using (Html.BeginForm("DangKy", "Khachhang", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <section class="maincontent clearfix py-3">
+
+        <div class="row">
+            <div class="col-md-6 text-center py-md-5">
+                <img style="width:75%" src="~/Public/images/Product/iP13-Pro-Max.png" class="img-fluid card-img-top pt-2" />
+
+            </div>
+            <div class="col-md-6 ">
+                <form action="">
+                    <div class="containerr">
+                        <h1 style="width:70%">Đăng Ký</h1>
+                        <p style="width:80%" class="text-center">Hãy nhập biểu mẫu bên dưới để đăng ký.</p>
+                        <hr>
+                        <label style="width:80%" for="Name"><b>Họ tên</b></label>
+                        <input style="width:80%" type="text" placeholder="Nhập họ tên..." name="Fullname" required>
+
+                        <label style="width:80%" for="Usernam"><b>Tên tài khoản</b></label>
+                        <input style="width:80%" type="text" placeholder="Nhập tên tài khoản..." name="username" required>
+
+                        <label style="width:80%" for="email"><b>Email</b></label>
+                        <input style="width:80%" type="text" placeholder="Nhập Email..." name="Email" required>
+
+                        <label style="width:80%" for="phone"><b>Số điện thoại</b></label>
+                        <input style="width:80%" type="text" placeholder="Nhập số điện thoại..." name="Phone" required>
+
+                        <label style="width:80%" for="addres"><b>Địa chỉ</b></label>
+                        <input style="width:80%" type="text" placeholder="Nhập địa chỉ..." name="Address" required>
+
+                        <label style="width:80%" for="psw"><b>Mật Khẩu</b></label>
+                        <input style="width:80%" type="password" placeholder="Nhập Mật Khẩu..." name="password" required>
+
+                        <div class="clearfix">
+                            <button style="width:80%" type="submit" class="signupbtn" value="">Đăng ký</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group my-3">
+                    @*@Html.Action("DangNhap", "Khachhang")*@
+                    <span>
+                        chuyển sang<a href="@Url.Action("DangNhap", "KhachHang")" class=" text-decoration-none ">  Đăng nhập</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+}

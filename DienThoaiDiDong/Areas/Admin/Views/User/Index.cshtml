@@ -1,0 +1,151 @@
+﻿@model IEnumerable<MyClass.Models.User>
+
+@{
+    ViewBag.Title = "Tất Cả Thành Vên";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section header{
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+}
+
+@section footer{
+    <script src="~/Public/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Tất Cả Thành Vên</strong>
+
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a class="btn btn-sm btn-success" href="@Url.Action("Create","User")"><i class="fas fa-plus"></i> Thêm</a>
+                        <a class="btn btn-sm btn-danger" href="@Url.Action("Trash","User")"><i class="fas fa-trash"></i> Thùng rác</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @Html.Partial("Message")
+                <table class="table table-bordered table-striped" id="myTable">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width:15px;">#</th>
+                            <th class="text-center" style="width:130px;">
+                                Họ & Tên
+                            </th>
+                            <th>
+                                Tài khoản
+                            </th>
+
+                            <th class="text-center">
+                                Email
+                            </th>
+                            <th>
+                                Địa chỉ
+                            </th>
+                            <th class="text-center" style="width:20px;">
+                                Giới tính
+                            </th>
+                            <th class="text-center" style="width:80px;">
+                                Số điện thoại
+                            </th>
+                            <th>
+                                Vai trò
+                            </th>
+
+                            <th class="text-center" style="width:80px;">
+                                Ngày tạo
+                            </th>
+
+                            <th class="text-center" style="width:140px;">Chức năng</th>
+                            <th class="text-center" style="width:20px;">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center"> <input type="checkbox" name="checkId" value=" " /> </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Roles)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedAt)
+                            </td>
+
+                            <td class="text-center">
+                                @if (item.Status == 1)
+                                {
+                                    <a href="@Url.Action("Status", "User", new { id=item.Id })" class="btn btn-sm btn-success ">
+                                        <i class="fas fa-toggle-on"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Status", "User", new { id=item.Id })" class="btn btn-sm btn-danger ">
+                                        <i class="fas fa-toggle-off"></i>
+                                    </a>
+                                }
+                                <a href="@Url.Action("Edit", "User", new { id=item.Id })" class="btn btn-sm btn-info ">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("Details", "User", new { id=item.Id })" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="@Url.Action("Deltrash", "User", new { id=item.Id })" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+
+
+
+
+

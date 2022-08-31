@@ -1,0 +1,12 @@
+﻿@model IEnumerable<MyClass.Models.Menu>
+<div class="col-md-4 text-center">
+    <h4 class="text-light text-center">Về Chúng Tôi</h4>
+    <div class="menu2">
+        <ul>
+            @foreach (var menu in Model)
+            {
+                <li><a class="text-light" href="@menu.Link"><p>@menu.Name</p></a></li>
+            }
+        </ul>
+    </div>
+</div>

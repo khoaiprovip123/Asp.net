@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MyClass.Models.Link>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+}
+@section header{
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+}
+
+@section footer{
+    <script src="~/Public/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Địa chỉ liên Kết</strong>
+
+                    </div>
+                    <div class="col-md-6 text-right">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @Html.Partial("Message")
+                <table class="table table-bordered table-striped" >
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width:20px;">#</th>
+
+                            <th class="text-center">
+                                @Html.DisplayNameFor(model => model.Slug)
+                            </th>
+                            <th class="text-center">
+                                Nhập liên kết
+                            </th>
+                            <th class="text-center">
+                                Table Id
+                            </th>
+                         
+                            <th class="text-center" style="width:20px;">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center"> <input type="checkbox" name="checkId" value=" " /> </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Slug)
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.TypeLink)
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.TableId)
+                                </td>
+                               
+                                
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+
+

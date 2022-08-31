@@ -1,0 +1,98 @@
+﻿@model PagedList.IPagedList<MyClass.Models.ProductInfo>
+@{
+    ViewBag.Title = "Tất cả sản phẩm";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+@using PagedList.Mvc;
+<section class="maincontent clearfix ">
+    <div class="container clearfix py-2">
+        <div class="row">
+            @Html.Action("ListCategory", "Module")
+
+            <div class="col-md-9">
+                <div class="col-md-12 col-lg-12">
+                    <div class="category-title position-relative py-2">
+                        <h2 class="text-center text-uppercase">Tất cả sản Phẩm</h2>
+                        <a class="float-end position-absolute top-0 end-0 py-2" href="#"> </a>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="owl-carousel owl-theme">
+                                <div class="item product-item">
+                                    <div class="row">
+                                        @foreach (var product in Model)
+                                        {
+                                            int flag = (product.Price == product.Pricesale) ? 1 : 0;
+                                            decimal PercentDiscount = (100 - (product.Pricesale / product.Price) * 100);
+                                            <div class="col-md-3 py-2">
+                                                <div class="item product-item">
+                                                    <div class="card" style="width:100%">
+                                                        <a href="@product.Slug"><img src="~/Public/images/Product/@product.Img" class="img-fluid card-img-top pt-2" alt="Alternate Text" /></a>
+                                                        @if (flag == 1)
+                                                        {
+                                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                                Mới
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                                <span> -@string.Format("{0:#,0.0}", PercentDiscount)% </span>
+                                                            </span>
+                                                        }
+                                                        <div class="card-body ">
+                                                            <h6 class="card-title text-center"><a class="text-black text-decoration-none" href="@product.Slug">@product.Name</a></h6>
+                                                            <div class="text-center">
+                                                                <style>
+                                                                    .checked {
+                                                                        color: green;
+                                                                    }
+                                                                </style>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                            </div>
+                                                            <h6 class="text-center ">
+                                                                <strong class="text-danger">@string.Format("{0:0,0}", product.Pricesale) <span class="text-decoration-underline">đ</span></strong>
+                                                                @if (flag != 1)
+                                                                {
+                                                                    <strong class="text-muted text-decoration-line-through ">@string.Format("{0:0,0}", product.Price)<span class="text-decoration-underline">đ</span></strong>
+                                                                }
+                                                            </h6>
+                                                            <div class="btn-group w-100" role="group">
+                                                                <a href="@product.Slug" class="btn btn-sm btn-outline-primary "><i class="far fa-eye"></i></a>
+                                                                <a href="@Url.Action("CartAdd","Giohang", new { productid= product.Id})" class="btn btn-sm btn-outline-primary "><i class="fas fa-shopping-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center ">
+                                        @Html.PagedListPager(Model, page => Url.Action("Product", "Site",  new { page }))
+                                        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+

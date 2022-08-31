@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<MyClass.Models.PostInfo>
+@{
+    ViewBag.Title = "Tất cả bài viết";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+
+<section class="main-container clearfix">
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="category-title position-relative">
+                    <h2 class="text-center text-success py-2">Tất Cả Bài Viết</h2>
+                </div>
+                @foreach (var post in Model)
+                {
+                    <div class="row py-3">
+                        <div class="col-md-4">
+                            <a href="~/@post.Slug"></a> <img src="~/Public/images/Post/@post.Img" class="img-fluid" />
+                        </div>
+                        <div class="col-md-8">
+                            <h3><a href="~/@post.Slug"> @post.Title</a></h3>
+                            <p>@Html.Raw(XString.Str_Limit(post.Detail, 800))</p>
+                            <div class="text-right"><a href="~/@post.Slug"> Xem Thêm</a></div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

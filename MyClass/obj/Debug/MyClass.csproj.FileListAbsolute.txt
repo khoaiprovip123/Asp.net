@@ -1,0 +1,15 @@
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\MyClass.dll.config
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\MyClass.dll
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\MyClass.pdb
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\EntityFramework.dll
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\EntityFramework.SqlServer.dll
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\PagedList.dll
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\PagedList.Mvc.dll
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\EntityFramework.xml
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\EntityFramework.SqlServer.xml
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\PagedList.xml
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\bin\Debug\PagedList.Mvc.xml
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\obj\Debug\MyClass.csproj.CoreCompileInputs.cache
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\obj\Debug\MyClass.csproj.CopyComplete
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\obj\Debug\MyClass.dll
+D:\ĐATT\NguyenVanKhoai_2118110118\MyClass\obj\Debug\MyClass.pdb

@@ -1,0 +1,43 @@
+﻿
+
+@model MyClass.Models.Post
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+
+<section class="maincontent clearfix">
+    <div class="container my-3">
+        <div class="row mb-5">
+            <div class="col-md-12 col-lg-12">
+                <h1 class="title-post my-3 text-success">@Model.Title</h1>
+                <img style="width:70%" class="text-center my-3 " src="~/Public/images/Post/@Model.Img" />
+                <p>@Html.Raw(Model.Detail)</p>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12 col-lg-12">
+                <h3 class="title-post my-3">Bài Viết Khác</h3>
+                @foreach (var post in ViewBag.ListOrther)
+                {
+                    <a href="~/@post.Slug">@post.Title</a>
+                }
+            </div>
+        </div>
+        <div id="fb-root"></div>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <div class="fb-like" data-href="https://localhost:44358/"
+                     data-width=""
+                     data-layout="standard"
+                     data-action="like"
+                     data-size="small"
+                     data-share="true">
+                </div>
+            </div>
+            <div class="md-9">
+                <div class="fb-comments" data-href="https://localhost:44358/" data-numposts="5"></div>
+            </div>
+        </div>
+    </div>
+</section>

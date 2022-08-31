@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+
+@using (Html.BeginForm("DangNhap", "Khachhang", FormMethod.Post))
+{
+    <section class="maincontent clearfix py-md-3">
+        <div class="row">
+            <div class="col-md-6 text-center py-md-3">
+                <img style="width:75%" src="~/Public/images/Product/iP13-Pro-Max.png" class="img-fluid card-img-top pt-2" />
+            </div>
+            <div class="col-md-6">
+                <form action="">
+                    <div class="containerr">
+                        <h1>Đăng Nhập</h1>
+                        <hr>
+
+                        <label style="width:90%" for="email"><b>Tên tài khoản</b></label>
+                        <input style="width:90%" type="text" placeholder="Nhập tài khoản" name="username" required>
+
+                        <label style="width:90%" for="psw"><b>Mật Khẩu</b></label>
+                        <input style="width:90%" type="password" placeholder="Nhập Mật Khẩu" name="password" required>
+
+                        <label style="width:90%" >
+                            <input style=" margin-bottom: 15px" type="checkbox" checked="checked" name="remember"> Nhớ Đăng Nhập
+                        </label>
+
+                        <div class="clearfix  ">
+                            <button style="width:90%" type="submit" class="signupbtn">Đăng Nhập</button>
+                        </div>
+                        <label class="text-center">
+                            <a class="nav-link text-center" href="~/dang-ky"> Bạn chưa có tài khoản. Bấm vào đây để đăng ký</a>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    @*<section class="maincontent clearfix py-md-3">
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-center">Đăng Nhập</h2>
+                <div class="container my-3">
+                    <div class="form-group my-2">
+                        <label>Tên đăng nhập</label>
+                        <input name="username" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group my-2">
+                        <label>Mật khẩu</label>
+                        <input  name="password" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group my-3 text-center">
+                        <button type="submit" class="btn btn-outline-success">Đăng nhập</button>
+                    </div>
+                    <div class="form-group my-3">
+                        @Html.Raw(ViewBag.Error)
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    @*</section>*@
+}
+

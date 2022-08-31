@@ -1,0 +1,105 @@
+﻿@model MyClass.Models.Supplier
+
+@{
+    ViewBag.Title = "Xóa nhà cung cấp";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="content-wrapper">
+
+        <section class="content my-2">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">
+                                Xóa Nhà Cung Cấp    
+                            </strong>
+
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button class="btn btn-sm btn-danger" type="submit" value="Delete"><i class="fas fa-trash"></i> Xóa</button>
+                            <a class="btn btn-sm btn-info" href="@Url.Action("Edit", "Supplier", new { id=Model.Id })"><i class="fas fa-edit"></i>Chỉnh sửa</a>
+                            <a class="btn btn-sm btn-success" href="@Url.Action("Index", "Supplier")"><i class="fas fa-undo-alt"></i> Quay lại</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Bạn có chắc muốn xóa không?</h3>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width:150px">Tiêu Đề</th>
+                            <th> Nội dung</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayFor(model => model.Name)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Link)</th>
+                            <th>@Html.DisplayFor(model => model.Link)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Img)</th>
+                            <th>@Html.DisplayFor(model => model.Img)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <th>@Html.DisplayFor(model => model.Email)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Adress)</th>
+                            <th>@Html.DisplayFor(model => model.Adress)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                            <th>@Html.DisplayFor(model => model.Phone)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Orders)</th>
+                            <th>@Html.DisplayFor(model => model.Orders)</th>
+                        </tr>
+
+                        <tr>
+                            <th>   @Html.DisplayNameFor(model => model.Metadesc)</th>
+                            <th>@Html.DisplayFor(model => model.Metadesc)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Metakey)</th>
+                            <th> @Html.DisplayFor(model => model.Metakey)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.CreatedBy)</th>
+                            <th> @Html.DisplayFor(model => model.CreatedBy)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
+                            <th>@Html.DisplayFor(model => model.CreatedAt)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.UpdatedBy)</th>
+                            <th>@Html.DisplayFor(model => model.UpdatedBy)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.UpdatedAt)</th>
+                            <th>@Html.DisplayFor(model => model.UpdatedAt)</th>
+                        </tr>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Status)</th>
+                            <th> @Html.DisplayFor(model => model.Status)</th>
+                        </tr>
+                    </table>
+                        
+                        
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+}
+

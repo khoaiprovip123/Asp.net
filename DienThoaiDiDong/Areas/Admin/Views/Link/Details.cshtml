@@ -1,0 +1,53 @@
+﻿@model MyClass.Models.Link
+
+@{
+    ViewBag.Title = "Thông tin chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Thông tin chi tiết</strong>
+
+                    </div>
+                    <div class="col-md-6 text-right">
+
+                        <a class="btn btn-sm btn-info" href="@Url.Action("Edit", "Link", new { id=Model.Id })"><i class="fas fa-edit"></i>Chỉnh sửa</a>
+                        <a class="btn btn-sm btn-success" href="@Url.Action("Index", "Link")"><i class="fas fa-undo-alt"></i> Quay lại</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body my-3">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:150px">Tiêu Đề</th>
+                        <th> Nội dung</th>
+                    </tr>
+                    <tr>
+                        <th> Liên Kết</th>
+                        <th> @Html.DisplayFor(model => model.Slug)</th>
+                    </tr>
+                    <tr>
+                        <th>Nhập Liên Kết</th>
+                        <th> @Html.DisplayFor(model => model.TypeLink)</th>
+                    </tr>
+                    <tr>    
+                        <th> ID bảng</th>
+                        <th> @Html.DisplayFor(model => model.TableId)</th>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+

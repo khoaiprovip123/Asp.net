@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CartItem>
+@{
+    ViewBag.Title = "Thanh Toán";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+@{
+    var user = ViewBag.user;
+}
+@using (Html.BeginForm("DatMua", "Giohang", FormMethod.Post))
+{
+<section class="main-container clearfix">
+    <div class="container my-3">
+        <div class="row">
+            <div class="category-title position-relative py-2">
+                <h2 class="text-center text-uppercase text-success">Thanh Toán</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width:70px;" class="text-center">Mã SP</th>
+                                <th style="width:100px;" class="text-center">Hình</th>
+                                <th class="text-center">Tên sản Phẩm</th>
+                                <th class="text-center">Giá</th>
+                                <th style="width:100px;" class="text-center">Số lượng </th>
+                                <th class="text-center">Thành tiền</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ decimal tongtien = 0;}
+                            @foreach (var cart in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@cart.ProductId</td>
+                                    <td class="text-center"><img class="img-fluid card-img-top" src="~/Public/images/Product/@cart.Img" alt="@cart.Name" /></td>
+                                    <td class="text-center">@cart.Name</td>
+                                    <td class="text-center"> @string.Format("{0:0,0}", cart.Price) VNĐ</td>
+                                    <td class="text-center">@cart.Qty</td>
+                                    <td class="text-center">@string.Format("{0:0,0}", cart.Amount) VNĐ</td>
+                                    <td class="text-center">
+                                        <a class="text-danger" href="@Url.Action("CartDel", "Giohang", new { productid = cart.ProductId }) "><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                tongtien += cart.Amount;
+                            }
+                        </tbody>
+                    </table>
+
+                    <h2 class="text-center">THÔNG TIN KHÁCH HÀNG</h2>
+                    <div class="form-control my-2">
+                        <label>Họ tên khách hàng </label>
+                        <input name="Fullname" readonly value="@user.Fullname" class="form-control" />
+                    </div>
+                    <div class="form-control my-2">
+                        <label>Email </label>
+                        <input name="Email" readonly value="@user.Email" class="form-control" />
+                    </div>
+                    <div class="form-control my-2">
+                        <label>Điện thoại </label>
+                        <input name="Phone" readonly value="@user.Phone" class="form-control" />
+                    </div>
+                    <div class="form-control my-2">
+                        <label>Điạ chỉ</label>
+                        <input name="Address" readonly value="@user.Address" class="form-control" />
+                    </div>
+                    <h2 class="text-center">THÔNG TIN NGƯỜI NHẬN</h2>
+                    <div class="form-control my-2">
+                        <label>Họ tên người nhận </label>
+                        <input name="ReceiverName" class="form-control" />
+                    </div>  
+                    <div class="form-control my-2">
+                        <label>Email </label>
+                        <input name="ReceiverEmail" class="form-control" />
+                    </div>
+                    <div class="form-control my-2">
+                        <label>Điện thoại </label>
+                        <input name="ReceiverPhone" class="form-control" />
+                    </div>
+                    <div class="form-control my-2">
+                        <label>Điạ chỉ</label>
+                        <input name="ReceiverAddress" class="form-control" />
+                    </div>
+                    <div class="form-control my-2">
+                        <label>Ghi chú</label>
+                        <textarea name="Note" class="form-control" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h3>Thông tin:</h3>
+                    <p>Tổng tiền: <b>@string.Format("{0:0,0}", tongtien) VNĐ</b></p>
+                    <p>Tiền giảm:  VNĐ</p>
+                    <button type="submit" class="btn btn-outline-success">Đặt Mua</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+}

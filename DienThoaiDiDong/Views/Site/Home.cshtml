@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MyClass.Models.Category>
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+
+@section header{
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+}
+
+<section class="maincontent clearfix py-2">
+    <div class="container">
+        <div class="row py-2">
+            @Html.Action("ListCategory", "Module")
+
+            @Html.Action("Slideshow", "Module")
+
+        </div>
+    </div>
+</section>
+<!----------------------------end sliderShow-------------------------->
+
+<section class="maincontent clearfix py-2">
+    <div class="container hidden-mobile-480">
+        <div class="row">
+            <div class="col-md-12 py-2">
+                <a href="#">
+                    <img class="img-fix-form" style="width:100%; height:100%;" src="https://mistore.com.vn/wp-content/uploads/2020/12/redmi9.jpg" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="maincontent clearfix ">
+    <div class="container clearfix my-3">
+        <div class="row">
+
+        </div>
+    </div>
+    <div class="container clearfix py-2">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://mistore.com.vn/wp-content/uploads/2021/03/mi11-1.jpg" alt="">
+            </div>
+            <div class="col-md-9">
+                <div class="col-md-12 col-lg-12">
+                    @foreach (var category in Model)
+                    {
+                        @Html.Action("HomeProduct", "Site", new { @id = category.Id })
+
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section class="maincontent clearfix ">
+    <div class="container clearfix py-2">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+
+                <div class="category-title position-relative py-2">
+                    <hr><h2 class="text-center text-uppercase text-blue">Tin tức</h2>
+
+                    <a class="float-end position-absolute top-50 end-0 py-2" href="~/tat-ca-bai-viet">Xem tất cả</a>
+                </div>
+
+                @Html.Action("HomePost","Site")
+            </div>
+        </div>
+    </div>
+</section>

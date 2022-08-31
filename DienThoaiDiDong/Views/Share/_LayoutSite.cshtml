@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Public/images/logo.png" rel="shortcut icon" type="image/x-icon">
+    <link href="~/Public/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/LayoutSite.css" rel="stylesheet" />
+    <link href="~/Public/css/error.css" rel="stylesheet" />
+    <link href="~/Public/css/Login.css" rel="stylesheet" />
+    <link href="~/Public/css/PagedList.css" rel="stylesheet" />
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="pNCAk1Yo"></script>
+
+    @section header{
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="1pcYqToJ"></script>
+    }
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+
+    @RenderSection("header", required: false)
+</head>
+<body>
+
+    <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+    <section class="header clearfix">
+        <div class="container">
+            <div class="row py-2">
+                <div class="col-md-6 ">
+
+                </div>
+                <div class="col-md-6">
+                    @* cắt module ra *@
+                    @Html.Action("Userbar", "Module")
+                </div>
+
+                @*<div class="col-md-3">
+                        <a href="~/gio-hang" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thanh toán <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text">
+                        <a class="nav-link dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-mobile-alt"></i>  0868321794
+                        </a>
+                    </div>*@
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row py-2">
+                <div class="col-md-2 logo">
+                    <a class="m-md-auto" href="@Url.Action("Index","Site")"><img style="width:60%; height:100%;" class="img-fluid" src="~/Public/images/Logo.png" alt="Hình Logo" /></a>
+
+                </div>
+                <div class="col-md-7 mt-4">
+                    <form action="/tim-kiem" class="d-flex" name="timkiem">
+                        <input style="height:45px" class="outline-primary form-control me-2" name="key" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                        <button style="width:98px" class="btn btn-sm btn-outline-success" name="submit">Tìm...</button>
+                    </form>
+                </div>
+                <div class="col-md-3 pt-4 text-end">
+
+                    @{ int soluong = 0;
+                        if (!System.Web.HttpContext.Current.Session["MyCart"].Equals(""))
+                        {
+                            List<CartItem> listcart = (List<CartItem>)System.Web.HttpContext.Current.Session["MyCart"];
+                            soluong = listcart.Count();
+                        }
+
+                    }
+                    <a href="/gio-hang" type="button" class="btn btn-primary btn-sm position-relative">
+                        <i class="fas fa-shopping-bag"></i> Giỏ hàng
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            @soluong
+                            <span class="visually-hidden">unresd messages</span>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!----------------------------end header-------------------------->
+    <section class="mainmenu clearfix bg-footer">
+        <div class="container">
+            @Html.Action("MainMenu", "Module")
+        </div>
+    </section>
+    <!----------------------------end mainmenu-------------------------->
+    <!----------------------------------------------------------------------------------------------------------->
+
+    @RenderBody()
+
+    <!-----------------------------------------------------------end maincontent--------------------------------------->
+    <section class="footer clearfix bg-footer py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="text-light">Quy định đổi trả </h4>
+                    <div class="menu2">
+                        <h6 class="text-light">KT Shop sẳn sàng hỗ trợ sản phẩm của bạn trong vòng 15 ngày trên toàn hệ thống</h6>
+                    </div>
+                    <hr class="text-light" />
+                    <div class="subscribe-form">
+                        <h6 class="text-light">Nhập Email để có thông báo mới nhất về chúng tôi</h6>
+                        <form action="#">
+                            <input style="width:75%;height:80%" type="text" placeholder="Email Address">
+                            <button style="width:15%;height:80%"><i class="fab fa-telegram-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+                @Html.Action("FooterMenu", "Module")
+                <div class="col-md-4  text-center ">
+                    <h4 class="text-light text-center">Hỗ trợ khách hàng </h4>
+                    <div class="menu2 ">
+                        <ul>
+                            <li><a class="text-light" href=".."><p>Địa chỉ: Q.9 TP.Thủ Đức</p></a></li>
+                            <li><a class="text-light" href=".."><p>Hotline: (+84)868321794</p></a></li>
+                            <li><a class="text-light" href=".."><p>Email: vankhoai690@gmail.com</p></a></li>
+                        </ul>
+                    </div>
+                    @*<div class="col-md-3">
+                            <h4 class="text-light">Thông tin</h4>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </section>
+    <!----------------------------end footer-------------------------->
+    <section class="copyright clearfix bg-footer  ">
+        <div class="container border-top border-light">
+            <div class="row">
+                <div class="col-md-6 text-light"> &copy; 2021 Bản quyền thuộc về Nguyễn Văn Khoai</div>
+                <div class="col-md-6 text-light text-end"> &copy; 2019 Văn Khoai. Đã đăng ký bản quền.</div>
+            </div>
+        </div>
+    </section>
+    <!----------------------------end copyright-------------------------->
+
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    @RenderSection("footer", required: false)
+</body>
+</html>

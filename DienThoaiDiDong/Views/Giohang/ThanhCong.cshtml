@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CartItem>
+@{
+    ViewBag.Title = "Đơn hàng đặt thành công";
+    Layout = "~/Views/Share/_LayoutSite.cshtml";
+}
+@{
+    var user = ViewBag.user;
+}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h4 class="text-center text-danger py-3">Đơn hàng đặt thành công !</h4>
+        <div class="container my-3">
+            <div class="row">
+                <div class="category-title position-relative py-2">
+                    <h2 class="text-center text-uppercase text-success">Đơn hàng của bạn</h2>
+                </div>
+                @foreach (var cart in Model)
+                {
+                    <div class="col-md-4">
+                        <img style="width:75%;" class="img-fluid card-img-top" src="~/Public/images/Product/@cart.Img" alt="@cart.Name" />
+                    </div>
+                }
+            <div class="col-md-6 py-4">
+                <table class="table table-bordered">
+                    @{ decimal tongtien = 0;}
+                    @foreach (var cart in Model)
+                    {
+                        <tr>
+                            <th style="width:200px;"class="table-info">Tiêu Đề</th>
+                            <th class="table-info"> Nội dung</th>
+                        </tr>
+                        <tr>
+                            <th>Tên sản Phẩm</th>
+                            <th>@cart.Name</th>
+                        </tr>
+                        <tr>
+                            <th>Giá</th>
+                            <th> @string.Format("{0:0,0}", cart.Price) VNĐ</th>
+                        </tr>
+                        <tr>
+                            <th>Số lượng</th>
+                            <th>@cart.Qty</th>
+                        </tr>
+                        <tr>
+                            <th>Thành tiền</th>
+                            <th>@string.Format("{0:0,0}", cart.Amount) VNĐ</th>
+                        </tr>
+                        tongtien += cart.Amount;
+                    }
+                    </table>
+
+
+               
+            </div>
+            </div>
+        </div>
+        <div class="col-md-12 py-3">
+            <a class="btn btn-sm btn-success text-center" href="@Url.Action("Index")"><i class="fas fa-undo-alt"></i> Quay lại giỏ hàng</a>
+            <a href="@Url.Action("Index", "Site")" class="btn btn-sm btn-success">Quay lại trang chủ</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MyClass.Models.Category>
+<div class="col-md-3">
+    <ul class="list-group ">
+
+        <li class="list-group-item active " aria-current="true">Tất Cả Sản Phẩm</li>
+        @foreach (var category in Model)
+        {
+            <a href="@category.Slug" class="btn list-group-item list-group-item-action">
+                @category.Name
+            </a>
+        }
+
+    </ul>
+</div>

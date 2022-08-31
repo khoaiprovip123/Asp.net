@@ -1,0 +1,123 @@
+﻿@model IEnumerable<MyClass.Models.Slider>
+@{
+    ViewBag.Title = "Thùng rác slider";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section header{
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+}
+
+@section footer{
+    <script src="~/Public/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Thùng rác Slider</strong>
+
+                    </div>
+                    <div class="col-md-6 text-right">
+
+                        <a class="btn btn-sm btn-success" href="@Url.Action("", "Slider")"><i class="fas fa-undo-alt"></i> Quay lại</a>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Link)
+                            </th>
+
+                            <th style="width:200px;" class="text-center">Hình</th>
+                            <th>
+                            Chức vụ
+                            </th>
+                            <th>
+                                Sắp xếp
+                            </th>
+
+                            <th>
+                                Được tạo lúc
+                            </th>
+
+                            <th class="text-center" style="width:200px;">Chức năng</th>
+                            <th class="text-center" style="width:20px;">ID</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="checkId" value=" " />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Link)
+                            </td>
+
+                            <td class="text-center">
+                                <img class="img-fix-form" style="width:35%; height:35%;" src="~/Public/images/Slider/@Html.DisplayFor(modelItem => item.Img)" alt="Alternate Text" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Orders)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedAt)
+                            </td>
+
+                            <td class="text-center">
+
+                                <a href="@Url.Action("Retrash", "Slider", new { id=item.Id })" class="btn btn-sm btn-success">
+                                    <i class="fas fa-undo-alt"></i>
+                                </a>
+                                <a href="@Url.Action("Delete", "Slider", new { id=item.Id })" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+
+
+                            <td class="text-center">
+                                @item.Id
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
